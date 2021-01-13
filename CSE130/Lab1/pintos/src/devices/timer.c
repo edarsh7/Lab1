@@ -101,6 +101,12 @@ timer_sleep (int64_t ticks)
 {
   int64_t start = timer_ticks ();
 
+  wakeup_time = start + ticks;
+  
+  thread_set_wakeup(wakeup_time);
+
+
+  /*code from lecture that puts thread to sleep*/
   intr_disable();
   thread_block();
   intr_enable();
