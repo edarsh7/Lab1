@@ -32,7 +32,7 @@ static void real_time_delay (int64_t num, int32_t denom);
 static void real_time_sleep (int64_t num, int32_t denom);
 
 /*new function to check if thread is asleep and if it is, to wake it up*/
-static void thread_alarmclock (struct thread *t, void *aux);
+static void timer_alarmclock (struct thread *t, void *aux);
 
 /* 
  * Sets up the timer to interrupt TIMER_FREQ times per second,
