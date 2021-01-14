@@ -131,12 +131,14 @@ void thread_yield(void);
 typedef void thread_action_func(struct thread *t, void *aux);
 void thread_foreach(thread_action_func *, void *);
 
+int thread_get_status(struct thread *t);
+uint64_t thread_get_wakeup(struct thread *t);
 
 int thread_get_priority(void);
 void thread_set_priority(int);
 
 /*added thread set wakeup to set the wakeup timer for a thread*/
-void thread_set_wakeup(int);
+void thread_set_wakeup_timer(int);
 
 int thread_get_nice(void);
 void thread_set_nice(int);
