@@ -207,6 +207,7 @@ timer_interrupt (struct intr_frame *args UNUSED)
   ticks++;
   thread_tick ();
 
+  /*using built in function to apply a alarm clock check to every thread*/
   thread_foreach(timer_alarmclock,0);
   
 }
@@ -290,6 +291,9 @@ real_time_delay (int64_t num, int32_t denom)
   busy_wait (loops_per_tick * num / 1000 * TIMER_FREQ / (denom / 1000)); 
 }
 
+
+/*The alarm clock that 1. checks if the thread is asleep and 2. checks if it is at or past its
+wakeup time. If both these conditions are met, unblock the thread*/
 static void 
 timer_alarmclock (struct thread *t, void *aux)
 {
@@ -299,3 +303,14 @@ timer_alarmclock (struct thread *t, void *aux)
     thread_unblock(t);
   }
 }
+
+
+/* LAB 1 ONLINE RESOURCE CREDITS: 
+1. Discussion post on canvas where Hanna Alanizi and Prof. David Harrison discussed that there is a function
+  function that will iterate through the list of threads
+2. secret sauce from lecture 
+3. https://stackoverflow.com/questions/1486904/how-do-i-best-silence-a-warning-about-unused-variables
+4. part 3.6 in the pdf for pintos from berkeley   
+  https://inst.eecs.berkeley.edu/~cs162/sp16/static/projects/project1.pdf
+5. https://web.stanford.edu/class/cs140/projects/pintos/pintos_1.html
+*/

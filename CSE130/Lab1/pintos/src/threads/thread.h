@@ -131,6 +131,7 @@ void thread_yield(void);
 typedef void thread_action_func(struct thread *t, void *aux);
 void thread_foreach(thread_action_func *, void *);
 
+/*new functions added to return convenient variables*/
 int thread_get_status(struct thread *t);
 int64_t thread_get_wakeup(struct thread *t);
 
