@@ -207,7 +207,7 @@ timer_interrupt (struct intr_frame *args UNUSED)
   ticks++;
   thread_tick ();
 
-  thread_foreach(thread_alarmclock,0);
+  thread_foreach(timer_alarmclock,0);
   
 }
 
@@ -291,8 +291,9 @@ real_time_delay (int64_t num, int32_t denom)
 }
 
 static void 
-thread_alarmclock (struct thread *t, void *aux)
+timer_alarmclock (struct thread *t, void *aux)
 {
+  (void)aux;
   if( (thread_get_status(t) == 3) && (thread_get_wakeup(t) <= timer_ticks()) )
   {
     thread_unblock(t);
