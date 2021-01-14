@@ -207,7 +207,7 @@ timer_interrupt (struct intr_frame *args UNUSED)
   ticks++;
   thread_tick ();
 
-  thread_foreach(thread_alarmclock(thread_current(),0),0);
+  thread_foreach(thread_alarmclock,0);
   
 }
 
