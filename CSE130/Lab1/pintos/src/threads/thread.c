@@ -376,9 +376,7 @@ thread_foreach(thread_action_func *func, void *aux)
   }
 }
 
-/*Lab1 func that checks if current thread is asleep*/
-void
-thread_sleep_check(struct thread *t){}
+
 
 /* New function that sets current threads wakeup timer to new_wakeup*/
 void
