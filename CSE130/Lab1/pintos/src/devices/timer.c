@@ -204,7 +204,7 @@ timer_interrupt (struct intr_frame *args UNUSED)
   thread_tick ();
 
   struct thread *iter_thread = thread_current();
-  printf("%s",iter_thread->status);
+  
 }
 
 /* 
