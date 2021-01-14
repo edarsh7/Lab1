@@ -295,6 +295,6 @@ thread_alarmclock (void)
 {
   if( (thread_get_status(thread_current()) == 3) && (thread_get_wakeup(thread_current()) <= timer_ticks()) )
   {
-    thread_unblock();
+    thread_unblock(thread_current());
   }
 }

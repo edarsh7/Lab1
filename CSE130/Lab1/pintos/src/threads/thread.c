@@ -394,7 +394,7 @@ thread_get_status(struct thread *t)
   }
 }
 
-uint64_t
+int64_t
 thread_get_wakeup(struct thread *t)
 {
   return t->wakeup_timer;
