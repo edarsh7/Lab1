@@ -108,6 +108,7 @@ timer_sleep (int64_t ticks)
   intr_disable();
   thread_block();
   intr_enable();
+  thread_yield();
 }
 
 /* 
