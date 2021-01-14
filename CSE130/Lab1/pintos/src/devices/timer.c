@@ -18,6 +18,7 @@
 #error TIMER_FREQ <= 1000 recommended
 #endif
 
+
 // Number of timer ticks since OS booted.
 static int64_t ticks;
 
@@ -103,12 +104,10 @@ timer_sleep (int64_t ticks)
   
   thread_set_wakeup(start + ticks);
 
-
   /*code from lecture that puts thread to sleep*/
   intr_disable();
   thread_block();
-  intr_enable();
-  thread_yield();
+  intr_enable();  
 }
 
 /* 
@@ -203,6 +202,9 @@ timer_interrupt (struct intr_frame *args UNUSED)
 {
   ticks++;
   thread_tick ();
+
+  struct thread *iter_thread = thread_current();
+  printf("%s",iter_thread->status);
 }
 
 /* 
